@@ -48,6 +48,13 @@ app.delete('/classes/delete', async (req, res) => {
     console.log("From classes, deleted: ", doc);
     res.send('Got a DELETE request');
 })
+app.delete('/classes/delete_student', async(req, res) => {
+    const {doc, studentDoc, ...rest} = req.body;
+    const resp = await db.collection('classes').doc(doc).update({students: firestore.FieldValue.arrayRemove(studentDoc) });
+    console.log(`For class ${doc}, deleted `, studentDoc);
+    res.send('Got a DELETE request');
+})
+
 
 app.put('/classes/add_student', async (req, res) => {
     const {doc, studentDoc, ...rest} = req.body;
