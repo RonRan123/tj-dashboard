@@ -1,9 +1,10 @@
+// import {db, firebase} from "./firebase";
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const db = require("./firebase");
 db.settings({ ignoreUndefinedProperties: true });
-const fetch = require('node-fetch');
+const fetch = require('node-fetch'); 
 
 PORT = 8080;
 app = express();
@@ -27,9 +28,9 @@ app.get("/classes/get", async (req, res) => {
 })
 
 app.post("/classes/add", async (req, res) => {
-    const {ID, Teacher, ...rest} = req.body;
+    const {classID, teacher, ...rest} = req.body;
     // console.log(averageRating);
-    const Students = [];
+    const students = [];
     const resp = await db.collection("classes").add({
         classID,
         teacher,
@@ -40,6 +41,19 @@ app.post("/classes/add", async (req, res) => {
     res.sendStatus(200);
 })
 
+app.delete('/classes/delete', async (req, res) => {
+    const {doc, ...rest} = req.body;
+    const resp = await db.collection('classes').doc(doc).delete();
+    console.log("From classes, deleted: ", doc);
+    res.send('Got a DELETE request');
+})
+
+app.put('/classes/add_student', async (req, res) => {
+    const {doc, studentDoc, ...rest} = req.body;
+    const resp = await db.collection('classes').doc(doc).update({students: db.FieldValue.arrayUnion(studentDoc) });
+    console.log(`For class ${doc}, added `, studentDoc);
+    res.send('Got a PUT request');
+})
 
 app.get("/teachers/get", async (req, res) => {
     const teachers = [];
@@ -63,6 +77,13 @@ app.post("/teachers/add", async (req, res) => {
 
     console.log("Added document to teachers with ID: ", resp.id);
     res.sendStatus(200);
+})
+
+app.delete('/teachers/delete', async (req, res) => {
+    const {doc, ...rest} = req.body;
+    const resp = await db.collection('teachers').doc(doc).delete();
+    console.log("From teachers, deleted: ", doc);
+    res.send('Got a DELETE request');
 })
 
 app.get("/students/get", async (req, res) => {
@@ -92,6 +113,12 @@ app.post("/students/add", async (req, res) => {
     res.sendStatus(200);
 })
 
+app.delete('/students/delete', async (req, res) => {
+    const {doc, ...rest} = req.body;
+    const resp = await db.collection('students').doc(doc).delete();
+    console.log("From students, deleted: ", doc);
+    res.send('Got a DELETE request');
+})
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`)
