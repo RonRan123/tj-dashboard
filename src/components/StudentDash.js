@@ -16,7 +16,7 @@ function StudentDash(){
     },[])
     return (
         <div>
-            {students && students.map(s => <Student info={s} refresh={getStudents}/>)}
+            {students && students.map(s => <Student info={s} />)}
         </div>
     );
 
