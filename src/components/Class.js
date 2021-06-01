@@ -5,7 +5,7 @@ function Class({info}){
     
     return (
         <div>
-            <h1>Class</h1>
+            <h1>{info.classID}</h1>
             <p>{info.teacher}</p>
             <p>{JSON.stringify(info)}</p>
             <p></p>

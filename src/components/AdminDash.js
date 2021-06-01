@@ -22,9 +22,12 @@ function AdminDash() {
               classes.map((c, index) => {
                 console.log(c);
                 return (
-                  <ListGroup.Item action href={"#link" + index}>
-                    <Class info={c} />
-                  </ListGroup.Item>
+                  <div>
+                    <ListGroup.Item action href={"#link" + index}>
+                      <Class info={c} />
+                    </ListGroup.Item>
+                    <Tab.Pane eventKey={'#link'+index}>{JSON.stringify(c.students)}</Tab.Pane>
+                  </div>
                 );
               })}
           </ListGroup>
