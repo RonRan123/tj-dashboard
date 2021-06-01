@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Card, Button, Table} from 'react-bootstrap';
+import StudentForm from './StudentForm'
+
 function Student({info}){
     
     const deleteStudent = () => {
@@ -16,14 +18,20 @@ function Student({info}){
     }
     
     return (
-            
-
             <tbody>
                 <tr>
                     <td>{info.firstName}</td>
                     <td>{info.lastName}</td>
                     <td>{info.DOB}</td>
-                    <td><Button onClick={deleteStudent}>Remove</Button></td>
+                    <td>{info.classID}</td>
+                    <td>
+                        <div>
+                            <StudentForm buttonLabel="Edit" info={info}/>
+                            {/* <Button variant="outline-primary" onClick={deleteStudent}>Edit</Button> */}
+                            {' '}
+                            <Button variant="outline-danger" onClick={deleteStudent}>Delete</Button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Student from './StudentInfo';
 import {Card, Table} from 'react-bootstrap';
-import StudentForm from './AddStudent';
+// import StudentForm from './AddStudent';
 
 function StudentDash(){
     const [students, setStudents] = useState();
@@ -23,7 +23,8 @@ function StudentDash(){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Birth Date</th>
-                <th>Remove</th>
+                <th>Class ID</th>
+                <th>Actions</th>
                 </tr>
             </thead>
             {students && students.map(s => <Student info={s} />)}
