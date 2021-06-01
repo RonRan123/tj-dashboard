@@ -7,6 +7,8 @@ function Class({info}){
         <div>
             <h1>Class</h1>
             <p>{info.teacher}</p>
+            <p>{JSON.stringify(info)}</p>
+            <p></p>
         </div>
         
     );

@@ -20,7 +20,7 @@ function AdminDash() {
           <ListGroup>
             {classes &&
               classes.map((c, index) => {
-                //console.log(c);
+                console.log(c);
                 return (
                   <ListGroup.Item action href={"#link" + index}>
                     <Class info={c} />
