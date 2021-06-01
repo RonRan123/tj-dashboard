@@ -113,7 +113,7 @@ app.post("/students/add", async (req, res) => {
         classID,
         firstName,
         lastName, 
-        dob,
+        DOB,
         grade,
     });
 
@@ -122,9 +122,10 @@ app.post("/students/add", async (req, res) => {
 })
 
 app.delete('/students/delete', async (req, res) => {
-    const {doc, ...rest} = req.body;
-    const resp = await db.collection('students').doc(doc).delete();
-    console.log("From students, deleted: ", doc);
+    const {doc_id, ...rest} = req.body;
+    console.log(doc_id);
+    const resp = await db.collection('students').doc(doc_id).delete();
+    console.log("From students, deleted: ", doc_id);
     res.send('Got a DELETE request');
 })
 
