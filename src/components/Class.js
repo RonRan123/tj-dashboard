@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 
 function Class({info}){
+    
     return (
         <div>
             <h1>Class</h1>
