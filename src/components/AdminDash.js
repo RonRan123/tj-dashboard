@@ -5,6 +5,7 @@ import ClassDash from './ClassDash';
 import ClassInfo from './ClassInfo';
 function AdminDash() {
 	const [classes, setClasses] = useState();
+    const [teachers, setTeachers] = useState();
 	const getMyClasses = async () => {
 		console.log('fetching classes');
 		const url = new URL('http://localhost:8080/classes/get');
