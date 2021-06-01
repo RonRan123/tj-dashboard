@@ -2,7 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const db = require("./firebase");
+const db = require("./firebase").firestore();
+const firestore = require('./firebase').firestore;
 db.settings({ ignoreUndefinedProperties: true });
 const fetch = require('node-fetch'); 
 
@@ -50,7 +51,7 @@ app.delete('/classes/delete', async (req, res) => {
 
 app.put('/classes/add_student', async (req, res) => {
     const {doc, studentDoc, ...rest} = req.body;
-    const resp = await db.collection('classes').doc(doc).update({students: db.FieldValue.arrayUnion(studentDoc) });
+    const resp = await db.collection('classes').doc(doc).update({students: firestore.FieldValue.arrayUnion(studentDoc) });
     console.log(`For class ${doc}, added `, studentDoc);
     res.send('Got a PUT request');
 })
