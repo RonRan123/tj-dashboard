@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Student from './StudentInfo';
-import {Card} from 'react-bootstrap';
+import {Card, Table} from 'react-bootstrap';
+import StudentForm from './AddStudent';
 
 function StudentDash(){
     const [students, setStudents] = useState();
@@ -16,7 +17,18 @@ function StudentDash(){
     },[])
     return (
         <div>
+        <Table striped bordered hover size="sm">
+            <thead>
+                <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birth Date</th>
+                <th>Remove</th>
+                </tr>
+            </thead>
             {students && students.map(s => <Student info={s} />)}
+        </Table>
+        
         </div>
     );
 

@@ -16,15 +16,7 @@ function Student({info}){
     }
     
     return (
-        <Table striped bordered hover size="sm">
-            <thead>
-                <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Birth Date</th>
-                <th>Remove</th>
-                </tr>
-            </thead>
+            
 
             <tbody>
                 <tr>
@@ -35,7 +27,7 @@ function Student({info}){
                 </tr>
             </tbody>
 
-        </Table>
+        
         
     );
 }
