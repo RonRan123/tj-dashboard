@@ -8,6 +8,8 @@ function App() {
   return (
     <div style={{ textAlign: 'center' }}>
       <StudentDash />
+      <TeacherDash />
+      <AdminDash/>
     </div>
   );
 }
