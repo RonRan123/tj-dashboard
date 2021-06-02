@@ -11,25 +11,25 @@ function StudentForm({buttonLabel,info }){
         if(buttonLabel === 'Edit'){
             return <Button variant='outline-primary' onClick={handleShow}>{buttonLabel}</Button>
         }
-        return <Button variant="outline-success">{buttonLabel}</Button>
+        return <Button variant="outline-success" onClick={handleShow}>{buttonLabel}</Button>
     }
     return (
         <>
             {retrieveButton()}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>{buttonLabel === 'Edit'?"Edit Student Form":"Add a Student"}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddEditForm info={info}/>
+                    <AddEditForm info={buttonLabel === 'Edit'?info:null} close={handleClose}/>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                {/* <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
                 <Button variant="primary" onClick={handleClose}>
                     Save Changes
-                </Button>
+                </Button> */}
                 </Modal.Footer>
             </Modal>
         </>

@@ -1,24 +1,42 @@
 import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
-function AddEditForm({info}){
+function AddEditForm({info, close}){
     const fields = {
         firstName: '',
         lastName: '',
-        DOB: '',
+        DOB: '06/02/2021',
         classID: '',
         grade: '',
 
     }
+    
     if(!info){
         info = fields;
     }
+    const [startDate, setStartDate] = useState(new Date());
     const [state, setState] = useState(info);
+    
     const onChange = e => {
         setState({...state, [e.target.name]: e.target.value})
     }
+    const changeDate = (d) => {
+        const date = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+        setStartDate(d);
+        console.log(date);
+        setState({...state, DOB: date});
+    } 
     const handleSubmit = () => {
-        console.log(state);
+        fetch('http://localhost:8080/students/update', {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(state),
+        }).then(resp => resp.json());
+        close();
     }
       
     return (
@@ -31,22 +49,14 @@ function AddEditForm({info}){
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter Last Name" name="lastName" onChange={onChange} value={state.lastName}/>
             </Form.Group>
-            <Form.Row>
-                <Form.Group controlId="formGridMonth">
-                <Form.Label>Month</Form.Label>
-                <Form.Control type="number"/>
-                </Form.Group>
-
-                <Form.Group controlId="formGridDate">
-                <Form.Label>Day</Form.Label>
-                <Form.Control type="number"/>
-                </Form.Group>
-
-                <Form.Group controlId="formGridZip">
-                <Form.Label>Year</Form.Label>
-                <Form.Control type="number"/>
-                </Form.Group>
-            </Form.Row>
+            <Form.Group>
+                <Form.Label>Select Date of Birth</Form.Label>
+                <DatePicker selected={startDate} onChange={(date) => changeDate(date)} />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Grade</Form.Label>
+                <Form.Control type="text" placeholder="Enter Grade" name="grade" onChange={onChange} value={state.grade}/>
+            </Form.Group>
             <Button onClick={handleSubmit}>Submit</Button>
         </Form>
     );

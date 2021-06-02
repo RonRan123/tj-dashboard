@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Student from './StudentInfo';
 import {Table} from 'react-bootstrap';
+import StudentForm from './StudentForm'
 // import StudentForm from './AddStudent';
 
 function StudentDash(){
@@ -30,7 +31,7 @@ function StudentDash(){
             </thead>
             {students && students.map(s => <Student id={s.doc} info={s} />)}
         </Table>
-        
+        <StudentForm buttonLabel="Add Student"/>
         </div>
     );
 
