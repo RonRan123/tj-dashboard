@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
 import ClassInfo from './ClassInfo';
 import ClassForm from './ClassForm';
+import {ClassContext, StudentContext, TeacherContext} from './Home';
 
-function ClassDash({ classes, teachers, getClasses }) {
+function ClassDash() {
+	const {classes, getMyClasses} = React.useContext(ClassContext);
+	const {teachers} = React.useContext(TeacherContext);
+	
 	const [modal, setModal] = useState(false);
 
 	const handleClick = (e) => {
@@ -20,7 +24,7 @@ function ClassDash({ classes, teachers, getClasses }) {
 					classes.map((c, index) => {
 						console.log(c);
 						return (
-							<ClassInfo c={c} index={index} teachers={teachers} getClasses={getClasses}></ClassInfo>
+							<ClassInfo c={c} index={index}></ClassInfo>
 						);
 					})}
 				<ListGroup.Item variant="dark" action onClick={handleClick}>
@@ -38,8 +42,6 @@ function ClassDash({ classes, teachers, getClasses }) {
 				</Modal.Header>
 				<Modal.Body>
 					<ClassForm
-						getClasses={getClasses}
-						teachers={teachers}
 						setModal={setModal}
 					/>
 				</Modal.Body>

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Button } from 'react-bootstrap';
+import { ClassContext, TeacherContext } from './Home';
 
-function ClassInfo({ index, c, teachers, getClasses }) {
+function ClassInfo({ index, c }) {
+	const {teachers} = React.useContext(TeacherContext);
+	const {getMyClasses} = React.useContext(ClassContext);
+	
 	const getTeacherName = (teacherID) => {
 		let teacherName = '';
 		for (let teach in teachers) {
@@ -26,7 +30,7 @@ function ClassInfo({ index, c, teachers, getClasses }) {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({ doc: c.doc_id }),
-			}).then((res) => getClasses());
+			}).then((res) => getMyClasses());
 			//const content = await rawResponse.json();
 
 			//console.log(content);

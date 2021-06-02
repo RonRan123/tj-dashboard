@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
 import ClassInfo from './ClassInfo';
+import { ClassContext, TeacherContext } from './Home';
 
-function ClassForm({ teachers, setModal, getClasses }) {
+function ClassForm({setModal}) {
+	
+	const {teachers} = React.useContext(TeacherContext);
+	const {getMyClasses} = React.useContext(ClassContext);
+	
 	const [className, setClassName] = useState('');
 	const [grade, setGrade] = useState(0);
 	const [teacherID, setTeacherID] = useState(teachers[0].doc_id);
+
+
 
 	return (
 		<Form
@@ -27,7 +34,7 @@ function ClassForm({ teachers, setModal, getClasses }) {
 							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify(obj),
-					}).then((res) => getClasses());
+					}).then((res) => getMyClasses());
 					//const content = await rawResponse.json();
 
 					//console.log(content);
