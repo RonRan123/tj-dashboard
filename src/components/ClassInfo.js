@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Button } from 'react-bootstrap';
 import { ClassContext, TeacherContext } from './Home';
 
-function ClassInfo({ index, c }) {
+function ClassInfo({ index, c, setClassID }) {
 	const {teachers} = React.useContext(TeacherContext);
 	const {getMyClasses} = React.useContext(ClassContext);
 	
@@ -39,7 +39,7 @@ function ClassInfo({ index, c }) {
 
 	return (
 		<div>
-			<ListGroup.Item variant="primary" action href={'#link' + index}>
+			<ListGroup.Item variant="primary" id={c.classID} onClick={() => setClassID(c.classID)} action href={'#link' + index}>
 				<Button variant="secondary" style={{ float: 'left' }}>
 					{' '}
 					Edit{' '}
@@ -54,9 +54,6 @@ function ClassInfo({ index, c }) {
 				<p> Teacher: {getTeacherName(c.teacher)} </p>
 				<p> Grade: {c.gradeLevel} </p>
 			</ListGroup.Item>
-			<Tab.Pane eventKey={'#link' + index}>
-				{/* {JSON.stringify(c.students)} */}
-			</Tab.Pane>
 		</div>
 	);
 }
