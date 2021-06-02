@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminDash from "./AdminDash.js";
 import TeacherDash from "./TeacherDash.js";
 import StudentDash from "./StudentDash.js";
+import Calendar from "./Calendar";
 import {FaAppleAlt, FaCalendarAlt, FaSchool} from 'react-icons/fa'
 import {RiAdminFill} from 'react-icons/ri'
 
@@ -118,7 +119,7 @@ function Home() {
                 <Route path="/" exact render={() => <HomeScreen />} />
                 <Route path="/admin" render={() => <AdminDash />} />
                 <Route path="/teacher" render={() => <TeacherDash />} />
-                <Route path="/calendar" exact />
+                <Route path="/calendar" render={() => <Calendar/>}/>
               </TeacherProvider>
             </StudentProvider>
           </ClassProvider>
