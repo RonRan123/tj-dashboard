@@ -20,7 +20,7 @@ function ClassDash({ classes, teachers, getClasses }) {
 					classes.map((c, index) => {
 						console.log(c);
 						return (
-							<ClassInfo c={c} index={index} teachers={teachers}></ClassInfo>
+							<ClassInfo c={c} index={index} teachers={teachers} getClasses={getClasses}></ClassInfo>
 						);
 					})}
 				<ListGroup.Item variant="dark" action onClick={handleClick}>

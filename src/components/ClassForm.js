@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
 import ClassInfo from './ClassInfo';
 
-function ClassForm({ teachers, setModal }) {
+function ClassForm({ teachers, setModal, getClasses }) {
 	const [className, setClassName] = useState('');
 	const [grade, setGrade] = useState(0);
 	const [teacherID, setTeacherID] = useState(teachers[0].doc_id);
@@ -27,10 +27,11 @@ function ClassForm({ teachers, setModal }) {
 							'Content-Type': 'application/json',
 						},
 						body: JSON.stringify(obj),
-					});
-					const content = await rawResponse.json();
+					}).then((res) => getClasses());
+					//const content = await rawResponse.json();
 
-					console.log(content);
+
+					//console.log(content);
 				})();
 				setModal(false);
 			}}
