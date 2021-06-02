@@ -21,7 +21,7 @@ function StudentForm({buttonLabel,info }){
                     <Modal.Title>{buttonLabel === 'Edit'?"Edit Student Form":"Add a Student"}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddEditForm info={buttonLabel === 'Edit'?info:null} close={handleClose}/>
+                    {buttonLabel === 'Edit'?<AddEditForm info={info} isEdit={true} close={handleClose}/>:<AddEditForm isEdit={false} close={handleClose}/>}
                 </Modal.Body>
                 <Modal.Footer>
                 {/* <Button variant="secondary" onClick={handleClose}>

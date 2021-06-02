@@ -3,7 +3,7 @@ import {Form, Button} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-function AddEditForm({info, close}){
+function AddEditForm({isEdit, info, close}){
     const fields = {
         firstName: '',
         lastName: '',
@@ -13,10 +13,10 @@ function AddEditForm({info, close}){
 
     }
     
-    if(!info){
+    if(!isEdit){
         info = fields;
     }
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date(info.DOB));
     const [state, setState] = useState(info);
     
     const onChange = e => {
@@ -28,7 +28,7 @@ function AddEditForm({info, close}){
         console.log(date);
         setState({...state, DOB: date});
     } 
-    const handleSubmit = () => {
+    const handleEdit = () => {
         fetch('http://localhost:8080/students/update', {
             method: 'PUT',
             headers: {
@@ -38,7 +38,25 @@ function AddEditForm({info, close}){
         }).then(resp => resp.json());
         close();
     }
-      
+    
+    const handleSubmit = () => {
+        fetch('http://localhost:8080/students/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(state),
+        }).then(resp => resp.json());
+        close();
+    }
+
+    const retrieveSubmit = () => {
+        if(isEdit){
+            return <Button onClick={handleEdit}>Save Changes</Button>
+        }
+        return <Button onClick={handleSubmit}>Add Student</Button>
+    }
+
     return (
         <Form id={info.doc?info.doc:'no-id'}>
             <Form.Group>
@@ -57,7 +75,7 @@ function AddEditForm({info, close}){
                 <Form.Label>Grade</Form.Label>
                 <Form.Control type="text" placeholder="Enter Grade" name="grade" onChange={onChange} value={state.grade}/>
             </Form.Group>
-            <Button onClick={handleSubmit}>Submit</Button>
+            {retrieveSubmit()}
         </Form>
     );
 }
