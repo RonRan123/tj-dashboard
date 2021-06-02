@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Card, Button, Table} from 'react-bootstrap';
+import React from 'react';
+import {Button} from 'react-bootstrap';
 import StudentForm from './StudentForm'
 
 function Student({info}){
@@ -24,6 +24,7 @@ function Student({info}){
                     <td>{info.lastName}</td>
                     <td>{info.DOB}</td>
                     <td>{info.classID}</td>
+                    <td>{info.grade}</td>
                     <td>
                         <div>
                             <StudentForm buttonLabel="Edit" info={info}/>

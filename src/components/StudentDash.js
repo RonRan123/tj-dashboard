@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Student from './StudentInfo';
-import {Card, Table} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 // import StudentForm from './AddStudent';
 
 function StudentDash(){
@@ -24,10 +24,11 @@ function StudentDash(){
                 <th>Last Name</th>
                 <th>Birth Date</th>
                 <th>Class ID</th>
+                <th>Grade</th>
                 <th>Actions</th>
                 </tr>
             </thead>
-            {students && students.map(s => <Student info={s} />)}
+            {students && students.map(s => <Student id={s.doc} info={s} />)}
         </Table>
         
         </div>
