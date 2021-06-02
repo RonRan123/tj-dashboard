@@ -3,6 +3,8 @@ import AdminDash from "./AdminDash.js";
 import TeacherDash from "./TeacherDash.js";
 import StudentDash from "./StudentDash.js";
 import Calendar from "./Calendar";
+import StudentDirectory from "./StudentDirectory";
+import TeacherDirectory from "./TeacherDirectory";
 import {FaAppleAlt, FaCalendarAlt, FaSchool} from 'react-icons/fa'
 import {RiAdminFill} from 'react-icons/ri'
 
@@ -82,21 +84,6 @@ function HomeScreen() {
         <h3>Go Banana Slugs!</h3>
         <br />
       </div>
-      <Button>
-        <Link style={{ textDecoration: "none", color: "white" }} to="/admin">
-          <b>Admin Dashboard</b> 
-        </Link>
-      </Button>
-      <Button>
-        <Link style={{ textDecoration: "none", color: "white" }} to="/teacher">
-          <b>Teacher Dashboard</b>
-        </Link>
-      </Button>
-      <Button>
-        <Link style={{ textDecoration: "none", color: "white" }} to="/calendar">
-          <b>Calendar</b>
-        </Link>
-      </Button>
     </div>
   );
 }
@@ -110,6 +97,8 @@ function Home() {
           <Nav.Link href='/admin' style={{color: 'white'}}><RiAdminFill size={25}/>Admin Dashboard</Nav.Link>
           <Nav.Link href='/teacher' style={{color: 'white'}}><FaAppleAlt size={25} />Teacher Dashboard</Nav.Link>
           <Nav.Link href='/calendar' style={{color: 'white'}}> <FaCalendarAlt size={25}/>Calendar</Nav.Link>
+          <Nav.Link href='/student-dir' style={{color: 'white'}}>Student Directory</Nav.Link>
+          <Nav.Link href='/teacher-dir' style={{color: 'white'}}>Teacher Directory</Nav.Link>
 
         </Navbar>
         <Switch>
@@ -120,6 +109,8 @@ function Home() {
                 <Route path="/admin" render={() => <AdminDash />} />
                 <Route path="/teacher" render={() => <TeacherDash />} />
                 <Route path="/calendar" render={() => <Calendar/>}/>
+                <Route path="/student-dir" render={() => <StudentDirectory/>}/>
+                <Route path="/teacher-dir" render={() => <TeacherDirectory/>}/>
               </TeacherProvider>
             </StudentProvider>
           </ClassProvider>
