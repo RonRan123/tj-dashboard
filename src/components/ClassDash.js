@@ -4,7 +4,7 @@ import ClassInfo from './ClassInfo';
 import ClassForm from './ClassForm';
 import {ClassContext, StudentContext, TeacherContext} from './Home';
 
-function ClassDash() {
+function ClassDash({setClassID}) {
 	const {classes, getMyClasses} = React.useContext(ClassContext);
 	const {teachers} = React.useContext(TeacherContext);
 	
@@ -20,11 +20,16 @@ function ClassDash() {
 	return (
 		<Tab.Container defaultActiveKey="#link0">
 			<ListGroup>
+				<div>
+				<ListGroup.Item variant="primary" onClick={() => setClassID('allIDs')} action href={'#link' + 0}>
+					<h4> Show All Students </h4>
+				</ListGroup.Item>
+				</div>
 				{classes &&
 					classes.map((c, index) => {
 						console.log(c);
 						return (
-							<ClassInfo c={c} index={index}></ClassInfo>
+							<ClassInfo c={c} index={index+1} setClassID={setClassID}></ClassInfo>
 						);
 					})}
 				<ListGroup.Item variant="dark" action onClick={handleClick}>

@@ -6,7 +6,7 @@ import {ClassContext, StudentContext, TeacherContext} from './Home';
 function AdminDash() {
 	const {classes, getMyClasses} = React.useContext(ClassContext);
 	const {teachers, getTeachers} = React.useContext(TeacherContext);
-
+	const [classID, setClassID] = useState('allIDs');
 	
 	// const [classes, setClasses] = useState([]);
 	// const [teachers, setTeachers] = useState([]);
@@ -35,14 +35,10 @@ function AdminDash() {
 				<Row>
 					<Col>
 					{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
-						<ClassDash
-							getClasses={getMyClasses}
-							classes={classes}
-							teachers={teachers}
-						/>
+						<ClassDash setClassID={setClassID}/>
 					</Col>
 					<Col xs={10}>
-						<StudentDash />
+						<StudentDash classID={classID}/>
 					</Col>
 				</Row>
 			</Container>
