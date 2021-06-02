@@ -73,8 +73,6 @@ function Home() {
       <ClassProvider>
         <StudentProvider>
           <TeacherProvider>
-            <StudentDash />
-            <TeacherDash />
             <AdminDash />
           </TeacherProvider>
         </StudentProvider>

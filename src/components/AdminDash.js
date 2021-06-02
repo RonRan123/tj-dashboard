@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ListGroup, Tab, Row, Col } from 'react-bootstrap';
 import ClassDash from './ClassDash';
+import StudentDash from './StudentDash';
+import {Container, Row, Col} from 'react-bootstrap';
 import {ClassContext, StudentContext, TeacherContext} from './Home';
-import ClassInfo from './ClassInfo';
 function AdminDash() {
 	const {classes, getMyClasses} = React.useContext(ClassContext);
 	const {teachers, getTeachers} = React.useContext(TeacherContext);
@@ -31,13 +31,21 @@ function AdminDash() {
 	}, []);
 	return (
 		<div>
-			<div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}>
-				<ClassDash
-					getClasses={getMyClasses}
-					classes={classes}
-					teachers={teachers}
-				></ClassDash>
-			</div>
+			<Container>
+				<Row>
+					<Col>
+					{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
+						<ClassDash
+							getClasses={getMyClasses}
+							classes={classes}
+							teachers={teachers}
+						/>
+					</Col>
+					<Col xs={10}>
+						<StudentDash />
+					</Col>
+				</Row>
+			</Container>
 		</div>
 	);
 }
