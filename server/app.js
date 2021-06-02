@@ -94,45 +94,66 @@ app.post('/teachers/add', async (req, res) => {
 });
 
 app.delete('/teachers/delete', async (req, res) => {
-	const { doc, ...rest } = req.body;
-	const resp = await db.collection('teachers').doc(doc).delete();
-	console.log('From teachers, deleted: ', doc);
-	res.send('Got a DELETE request');
-});
+    const {doc, ...rest} = req.body;
+    const resp = await db.collection('teachers').doc(doc).delete();
+    console.log("From teachers, deleted: ", doc);
+    res.send('Got a DELETE request');
+})
 
-app.get('/students/get', async (req, res) => {
-	const students = [];
-	const snapshot = await db.collection('students').get();
-	// console.log(snapshot);
-	snapshot.forEach((doc) => {
-		// console.log(doc.id, "=>", doc.data());
-		students.push({ ...doc.data(), doc_id: doc.id });
-	});
-	res.json(students);
-});
+app.get("/students/get", async (req, res) => {
+    const students = [];
+    const snapshot = await db.collection("students").get();
+    // console.log(snapshot);
+    snapshot.forEach((doc) => {
+        // console.log(doc.id, "=>", doc.data());
+        students.push({...doc.data(), doc_id: doc.id})
+    });
+    res.json(students);
+})
 
-app.post('/students/add', async (req, res) => {
-	const { classID, firstName, lastName, DOB, ...rest } = req.body;
-	// console.log(averageRating);
-	const grade = 0;
-	const resp = await db.collection('students').add({
-		classID,
-		firstName,
-		lastName,
-		dob,
-		grade,
-	});
+app.post("/students/add", async (req, res) => {
+    const {classID, firstName, lastName, DOB, ...rest} = req.body;
+    // console.log(averageRating);
+    const grade = 0;
+    const resp = await db.collection("students").add({
+        classID,
+        firstName,
+        lastName, 
+        DOB,
+        grade,
+    });
 
-	console.log('Added document to students with ID: ', resp.id);
-	res.sendStatus(200);
-});
+    console.log("Added document to students with ID: ", resp.id);
+    res.sendStatus(200);
+})
+
+
+app.put("/students/update", async (req, res) => {
+    const {doc_id, classID, firstName, lastName, DOB, grade, ...rest} = req.body;
+    const resp = await db.collection('students').doc(doc_id).update({
+        classID: classID,
+        firstName: firstName,
+        lastName: lastName,
+        DOB: DOB,
+        grade: grade
+    });
+    res.send("Got a PUT request to update student")
+})
+
+app.put("/students/grade_update", async (req, res) => {
+    const {grade, doc_id, ...rest} = req.body;
+    const resp = await db.collection('students').doc(doc_id).update({grade:grade});
+    res.send("Got a PUT request")
+})
 
 app.delete('/students/delete', async (req, res) => {
-	const { doc, ...rest } = req.body;
-	const resp = await db.collection('students').doc(doc).delete();
-	console.log('From students, deleted: ', doc);
-	res.send('Got a DELETE request');
-});
+    const {doc_id, ...rest} = req.body;
+    console.log(doc_id);
+    const resp = await db.collection('students').doc(doc_id).delete();
+    console.log("From students, deleted: ", doc_id);
+    res.send('Got a DELETE request');
+})
+
 
 app.listen(PORT, () => {
 	console.log(`Server listening on port ${PORT}...`);
