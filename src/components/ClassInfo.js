@@ -36,6 +36,11 @@ function ClassInfo({ index, c, teachers, getClasses }) {
 	return (
 		<div>
 			<ListGroup.Item variant="primary" action href={'#link' + index}>
+				<Button variant="secondary" style={{ float: 'left' }}>
+					{' '}
+					Edit{' '}
+				</Button>
+
 				<Button onClick={onClick} variant="danger" style={{ float: 'right' }}>
 					Delete
 				</Button>

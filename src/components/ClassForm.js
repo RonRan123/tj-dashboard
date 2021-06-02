@@ -30,7 +30,6 @@ function ClassForm({ teachers, setModal, getClasses }) {
 					}).then((res) => getClasses());
 					//const content = await rawResponse.json();
 
-
 					//console.log(content);
 				})();
 				setModal(false);
@@ -116,7 +115,13 @@ function ClassForm({ teachers, setModal, getClasses }) {
 						<option
 							value={'option' + index}
 							id={teacher.doc_id}
+							onChange={(e) => {
+								console.log('CHANGING');
+								setTeacherID(e.target.id);
+								console.log(e.target.id);
+							}}
 							onClick={(e) => {
+								console.log('CLICKING');
 								setTeacherID(e.target.id);
 								console.log(e.target.id);
 							}}
