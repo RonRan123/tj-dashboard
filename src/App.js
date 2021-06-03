@@ -6,11 +6,11 @@ import Home from './components/Home.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div>
-      <Home/>
-    </div>
-  );
+	return (
+		<div>
+			<Home />
+		</div>
+	);
 }
 
 export default App;
