@@ -5,8 +5,9 @@ import StudentDash from "./StudentDash.js";
 import Calendar from "./Calendar";
 import StudentDirectory from "./StudentDirectory";
 import TeacherDirectory from "./TeacherDirectory";
-import {FaAppleAlt, FaCalendarAlt, FaSchool} from 'react-icons/fa'
+import {FaAppleAlt, FaCalendarAlt, FaSchool, FaChalkboardTeacher} from 'react-icons/fa'
 import {RiAdminFill} from 'react-icons/ri'
+import {BsFillPersonFill} from 'react-icons/bs'
 
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
@@ -95,11 +96,11 @@ function Home() {
       <div style={{ textAlign: "center" }}>
         <Navbar bg="primary" variant='dark' style={{marginBottom:"1%"}}>
           <Navbar.Brand href="/" style={{paddingLeft:'1%'}}><FaSchool size={35}/></Navbar.Brand>
-          <Nav.Link href='/admin' style={{color: 'white'}}><RiAdminFill size={25}/>Admin Dashboard</Nav.Link>
-          <Nav.Link href='/teacher' style={{color: 'white'}}><FaAppleAlt size={25} />Teacher Dashboard</Nav.Link>
-          <Nav.Link href='/calendar' style={{color: 'white'}}> <FaCalendarAlt size={25}/>Calendar</Nav.Link>
-          <Nav.Link href='/student-dir' style={{color: 'white'}}>Student Directory</Nav.Link>
-          <Nav.Link href='/teacher-dir' style={{color: 'white'}}>Teacher Directory</Nav.Link>
+          <Nav.Link href='/admin' style={{color: 'white'}}><RiAdminFill size={25}/><p style={{display:'inline', marginLeft:'5px'}}>Admin Dashboard</p></Nav.Link>
+          <Nav.Link href='/teacher' style={{color: 'white'}}><FaAppleAlt size={25} /><p style={{display:'inline', marginLeft:'5px'}}>Teacher Dashboard</p></Nav.Link>
+          <Nav.Link href='/calendar' style={{color: 'white'}}> <FaCalendarAlt size={25}/><p style={{display:'inline', marginLeft:'5px'}}>Calendar</p></Nav.Link>
+          <Nav.Link href='/student-dir' style={{color: 'white'}}> <BsFillPersonFill size={25}/><p style={{display:'inline', marginLeft:'5px'}}>Student Directory</p></Nav.Link>
+          <Nav.Link href='/teacher-dir' style={{color: 'white'}}><FaChalkboardTeacher size={25}/><p style={{display:'inline', marginLeft:'5px'}}>Teacher Directory</p></Nav.Link>
 
         </Navbar>
         <Switch>
