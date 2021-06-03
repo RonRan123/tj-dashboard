@@ -11,7 +11,7 @@ function TeacherDash() {
 	return (
 		<div>
 			<SelectClassForm setClassID={setClassID}/>
-			<StudentDash classID={classID} />
+			<StudentDash classID={classID} isTeacher={true}/>
 		</div>
 	);
 }
