@@ -40,6 +40,7 @@ function StudentProvider({ children }) {
   const [students, setStudents] = useState([]);
 
   const getStudents = async () => {
+    console.log('fetching students');
     const url = new URL("http://localhost:8080/students/get");
     let res = await fetch(url).then((resp) => resp.json());
     setStudents(res);

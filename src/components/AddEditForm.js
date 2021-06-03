@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import {StudentContext} from "./Home";
 
 function AddEditForm({isEdit, info, close}){
+    
+    const {getStudents} = React.useContext(StudentContext);
+    
     const fields = {
         firstName: '',
         lastName: '',
@@ -35,7 +39,7 @@ function AddEditForm({isEdit, info, close}){
                 'Content-Type' : 'application/json',
             },
             body: JSON.stringify(state),
-        }).then(resp => resp.json());
+        }).then(resp => {resp.json(); getStudents()});
         close();
     }
     
@@ -46,7 +50,7 @@ function AddEditForm({isEdit, info, close}){
                 'Content-Type' : 'application/json',
             },
             body: JSON.stringify(state),
-        }).then(resp => resp.json());
+        }).then(resp => {resp.json(); getStudents()});
         close();
     }
 
