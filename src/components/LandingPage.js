@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
+import '../index.css';
 function LandingPage() {
 	return (
 		<Container fluid="lg">

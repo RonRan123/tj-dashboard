@@ -74,8 +74,7 @@ function TeacherProvider({ children }) {
 
 function HomeScreen() {
 	return (
-		<h1> design</h1>
-		// <div> {/* <LandingPage></LandingPage> */}</div>
+		<div> {<LandingPage></LandingPage>}</div>
 
 		// <div>
 		// 	<img
