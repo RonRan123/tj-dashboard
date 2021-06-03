@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import {StudentContext} from "./Home";
+import {ClassContext, StudentContext} from './Home';
 
 function AddEditForm({isEdit, info, close}){
-    
+    const {classes} = React.useContext(ClassContext);
     const {getStudents} = React.useContext(StudentContext);
     
     const fields = {
@@ -75,6 +75,33 @@ function AddEditForm({isEdit, info, close}){
                 <Form.Label>Select Date of Birth</Form.Label>
                 <DatePicker selected={startDate} onChange={(date) => changeDate(date)} />
             </Form.Group>
+            <Form.Group>
+                <Form.Label>ClassID</Form.Label>
+                <Form.Control as="select" defaultValue={info.classID} name="classID">
+                    <option
+                        value=""
+                        label=""
+                        onClick={ e => {
+                            setState({...state, "classID": e.target.value})
+                        }}  
+                    ></option>
+                    {classes.map((c, index) => {
+                        return (
+                            <option
+                                value={c.classID}
+                                id={c.classID}
+                                label={c.classID}
+                                onClick={ e => {
+                                    setState({...state, "classID": e.target.value})
+                                }}   
+                            >
+                            </option>
+                        )
+                    })}
+
+                </Form.Control>
+            </Form.Group>
+
             <Form.Group>
                 <Form.Label>Grade</Form.Label>
                 <Form.Control type="text" placeholder="Enter Grade" name="grade" onChange={onChange} value={state.grade}/>
