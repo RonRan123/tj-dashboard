@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Tab, Row, Col, Button } from 'react-bootstrap';
+import EditTeachForm from './EditTeachForm';
 import { ClassContext, TeacherContext } from './Home';
+
 function ClassCard(classID) {
 	//need access to teacher name, class id,
 	const { classes, getMyClasses } = React.useContext(ClassContext);
