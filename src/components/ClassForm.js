@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
-import ClassInfo from './ClassInfo';
+import React, { useState, } from 'react';
+import { Form, Button } from 'react-bootstrap';
+//import ClassInfo from './ClassInfo';
 import { ClassContext, TeacherContext } from './Home';
 
 function ClassForm({setModal}) {
