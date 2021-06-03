@@ -17,11 +17,21 @@ function Student({ info , isTeacher}) {
     }).then((resp) => {resp.json(); getStudents()});
   };
 
+  const updateGrade = (g) => {
+    fetch('http://localhost:8080/students/grade_update', {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify({doc_id:info.doc_id, grade:g}),
+        }).then(resp => {resp.json(); getStudents()});
+  }
+
   const getActions = () => {
     if(isTeacher){
       return (
         <InputGroup>
-          <FormControl value={info.grade}/>
+          <FormControl placeholder={info.grade} onChange={(e) => updateGrade(e.target.value)}/>
           <InputGroup.Append>
             <InputGroup.Text>/100</InputGroup.Text>
           </InputGroup.Append>

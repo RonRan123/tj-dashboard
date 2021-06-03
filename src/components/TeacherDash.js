@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { InputGroup } from 'react-bootstrap';
 import {ClassContext, StudentContext, TeacherContext} from './Home';
 import SelectClassForm from './SelectClassForm';
 import StudentDash from './StudentDash';
@@ -10,7 +11,9 @@ function TeacherDash() {
 	}, []);
 	return (
 		<div>
-			<SelectClassForm setClassID={setClassID}/>
+			<div style={{display: 'flex', justifyContent: 'center'}}>
+				<SelectClassForm setClassID={setClassID}/>
+			</div>
 			<StudentDash classID={classID} isTeacher={true}/>
 		</div>
 	);
