@@ -73,22 +73,23 @@ function TeacherProvider({ children }) {
 }
 
 function HomeScreen() {
-	return (
-		<div> {<LandingPage></LandingPage>}</div>
+	return <h1></h1>;
+	// return (
+	// 	// <div> {<LandingPage></LandingPage>}</div>
 
-		// <div>
-		// 	<img
-		//     style={{ width: "10%" }}
-		//     src="https://i1.wp.com/friendsofedgewood.org/wp-content/uploads/ew_mv_banana-slug.jpg"
-		//     alt="GO BANANA SLUGS"
-		//   ></img>
-		// 	<div>
-		// 		<h1>TJ Elementary Dashboard</h1>
-		//     <h3>Go Banana Slugs!</h3>
-		// 		<br />
-		// 	</div>
-		// </div>
-	);
+	// 	// <div>
+	// 	// 	<img
+	// 	//     style={{ width: "10%" }}
+	// 	//     src="https://i1.wp.com/friendsofedgewood.org/wp-content/uploads/ew_mv_banana-slug.jpg"
+	// 	//     alt="GO BANANA SLUGS"
+	// 	//   ></img>
+	// 	// 	<div>
+	// 	// 		<h1>TJ Elementary Dashboard</h1>
+	// 	//     <h3>Go Banana Slugs!</h3>
+	// 	// 		<br />
+	// 	// 	</div>
+	// 	// </div>
+	// );
 }
 
 function Home() {
