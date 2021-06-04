@@ -112,7 +112,7 @@ function ClassForm({ setModal }) {
 				</Form.Group>
 			</div>
 			<br />
-			<Form.Label>Choose Teacher</Form.Label>
+			{/* <Form.Label>Choose Teacher</Form.Label>
 			<Form.Control as="select" name="teacher" defaultValue="option0">
 				{teachers.map((teacher, index) => {
 					return (
@@ -134,9 +134,7 @@ function ClassForm({ setModal }) {
 						</option>
 					);
 				})}
-				{/* <option>Choose...</option>
-            <option>...</option> */}
-			</Form.Control>
+			</Form.Control> */}
 			<Button variant="primary" type="submit">
 				Submit
 			</Button>

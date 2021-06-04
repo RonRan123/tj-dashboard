@@ -105,6 +105,19 @@ app.post("/teachers/add", async (req, res) => {
   res.sendStatus(200);
 });
 
+
+app.put("/teachers/update", async (req, res) => {
+	const { doc_id, classID, firstName, lastName, ...rest } = req.body;
+  
+	const resp = await db.collection("teachers").doc(doc_id).update({
+	  classID: classID,
+	  firstName: firstName,
+	  lastName: lastName
+	
+	});
+	res.send("Got a PUT request to update teacher");
+  });
+
 app.delete("/teachers/delete", async (req, res) => {
   const { doc, ...rest } = req.body;
   const resp = await db.collection("teachers").doc(doc).delete();

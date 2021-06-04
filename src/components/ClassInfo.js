@@ -74,7 +74,7 @@ function ClassInfo({ index, c, setClassID }) {
         <br></br>
         <br></br>
         <h4> Class: {c.classID} </h4>
-        <p> Teacher: {getTeacherName(c.teacher)} </p>
+        {/* <p> Teacher: {getTeacherName(c.teacher)} </p> */}
         <p> Grade: {c.gradeLevel} </p>
       </ListGroup.Item>
     </div>
