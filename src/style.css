@@ -2,6 +2,7 @@ body,
 html {
 	height: 100vh;
 	min-height: 100%;
+	font-family: "Times New Roman", serif;
 }
 
 /* The hero image */
@@ -21,6 +22,12 @@ html {
 	padding-top: 50%;
 }
 
+.header {
+	font-size: 100px;
+}
+.subtitle {
+	font-size: 30px;
+}
 /* Place text in the middle of the image */
 .hero-text {
 	text-align: center;

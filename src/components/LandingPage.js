@@ -11,8 +11,8 @@ function LandingPage() {
     <div>
       <div className="hero-image">
         <div className="hero-text">
-          <h1>Thomas Jefferson Elementary </h1>
-          <p>Home of the Banana Slugs</p>
+          <h1 className="header">Thomas Jefferson Elementary </h1>
+          <p className="subtitle">Home of the Banana Slugs</p>
         </div>
       </div>
       <Container fluid="lg">

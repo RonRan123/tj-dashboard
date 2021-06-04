@@ -36,8 +36,9 @@ function AdminDash() {
 		<div style={{margin:'3%'}}>
 			<Container style={{}}>
 				<Row>
-					<Col md='auto' style={{margin:'auto'}}>
+					<Col md='auto' >
 						{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
+						<h1>Classes</h1>
 						<ClassDash setClassID={setClassID} />
 					</Col>
 
