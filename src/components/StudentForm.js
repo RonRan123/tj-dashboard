@@ -9,9 +9,9 @@ function StudentForm({buttonLabel,info }){
 
     const retrieveButton = () => {
         if(buttonLabel === 'Edit'){
-            return <Button variant='outline-primary' onClick={handleShow}>{buttonLabel}</Button>
+            return <Button variant='secondary' onClick={handleShow}>{buttonLabel}</Button>
         }
-        return <Button variant="outline-success" onClick={handleShow}>{buttonLabel}</Button>
+        return <Button variant="success" onClick={handleShow}>{buttonLabel}</Button>
     }
     return (
         <>

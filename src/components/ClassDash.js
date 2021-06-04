@@ -19,10 +19,10 @@ function ClassDash({ setClassID }) {
 	useEffect(() => {}, []);
 	return (
 		<Tab.Container defaultActiveKey="#link0">
-			<ListGroup>
+			<ListGroup style={{width:'max-content'}}>
 				<div>
 					<ListGroup.Item
-						variant="primary"
+						variant="secondary"
 						onClick={() => setClassID('allIDs')}
 						action
 						href={'#link' + 0}
@@ -41,7 +41,7 @@ function ClassDash({ setClassID }) {
 							></ClassInfo>
 						);
 					})}
-				<ListGroup.Item variant="dark" action onClick={handleClick}>
+				<ListGroup.Item variant="success" action onClick={handleClick} active style={{backgroundColor:'#198754'}}>
 					Add a Class
 				</ListGroup.Item>
 			</ListGroup>

@@ -46,36 +46,46 @@ function ClassInfo({ index, c, setClassID }) {
   return (
     <div>
       <ListGroup.Item
-        variant="primary"
+        variant="secondary"
         id={c.classID}
         onClick={() => setClassID(c.classID)}
         action
         href={"#link" + index}
       >
-        <Button
-          variant="secondary"
-          style={{ float: "left" }}
-          onClick={handleEdit}
-        >
-          {" "}
-          Edit{" "}
-        </Button>
         <Modal
           show={modal}
           onHide={() => {
             setModal(false);
           }}
-        ><Modal.Header closeButton ><Modal.Title>Edit Class</Modal.Title></Modal.Header>
-          <Modal.Body><ClassEditForm c={c} setModal={setModal}/></Modal.Body>
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Edit Class</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ClassEditForm c={c} setModal={setModal} />
+          </Modal.Body>
         </Modal>
-        <Button onClick={onClick} variant="danger" style={{ float: "right" }}>
-          Delete
-        </Button>
-        <br></br>
-        <br></br>
-        <h4> Class: {c.classID} </h4>
-        {/* <p> Teacher: {getTeacherName(c.teacher)} </p> */}
-        <p> Grade: {c.gradeLevel} </p>
+
+        {/* <br></br>
+        <br></br> */}
+        <div style={{ display: "inline-grid", marginRight: "1%" }}>
+          <h4 style={{}}>Class: {c.classID} </h4>
+          {/* <p> Teacher: {getTeacherName(c.teacher)} </p> */}
+          <p style={{ margin: "0" }}>Grade Level: {c.gradeLevel} </p>
+        </div>
+
+        <div>
+          <Button
+            variant="secondary"
+            style={{ display: "inline", marginRight:'2%' }}
+            onClick={handleEdit}
+          >
+            Edit
+          </Button>
+          <Button onClick={onClick} variant="danger" style={{}}>
+            Delete
+          </Button>
+        </div>
       </ListGroup.Item>
     </div>
   );
