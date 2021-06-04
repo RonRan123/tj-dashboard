@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap';
 import StudentForm from './StudentForm'
 // import StudentForm from './AddStudent';
 import {ClassContext, StudentContext, TeacherContext} from './Home';
-function StudentDash({classID}){
+function StudentDash({classID, isTeacher}){
 
     // const [students, setStudents] = useState();
 
@@ -35,12 +35,12 @@ function StudentDash({classID}){
                 <th>Birth Date</th>
                 <th>Class ID</th>
                 <th>Grade</th>
-                <th>Actions</th>
+                {isTeacher?<th>Enter Grade</th>:<th>Actions</th>}
                 </tr>
             </thead>
-            {students && showStudents.map(s => <Student id={s.doc} info={s} />)}
+            {students && showStudents.map(s => <Student id={s.doc} info={s} isTeacher={isTeacher}/>)}
         </Table>
-        <StudentForm buttonLabel="Add Student"/>
+        {isTeacher?null:<StudentForm buttonLabel="Add Student"/>}
         </div>
     );
 
