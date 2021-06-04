@@ -13,6 +13,7 @@ function LandingPage() {
         <div className="hero-text">
           <h1 className="header">Thomas Jefferson Elementary </h1>
           <p className="subtitle">Home of the Banana Slugs</p>
+          <p className="subtitle">Positivity, Respect, Diversity, Education, and Comradery</p>
         </div>
       </div>
       <Container fluid="lg">
