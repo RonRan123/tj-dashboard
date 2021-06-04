@@ -7,12 +7,12 @@ import StudentDirectory from "./StudentDirectory";
 import TeacherDirectory from "./TeacherDirectory";
 import {FaAppleAlt, FaCalendarAlt, FaSchool} from 'react-icons/fa'
 import {RiAdminFill} from 'react-icons/ri'
-
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
+import SideMenu from './SideMenu';
+import Footer from './Footer';
 
-import { Button, Nav, Navbar } from "react-bootstrap";
+import { Button, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 const ClassContext = React.createContext([]);
 const StudentContext = React.createContext([]);
@@ -92,15 +92,17 @@ function HomeScreen() {
 function Home() {
   return (
     <BrowserRouter>
+      
       <div style={{ textAlign: "center" }}>
-        <Navbar bg="primary" variant='dark' style={{marginBottom:"1%"}}>
+        <Navbar bg="primary" variant='dark' style={{marginBottom:"1%", position: 'sticky'}} fixed="top">
           <Navbar.Brand href="/" style={{paddingLeft:'1%'}}><FaSchool size={35}/></Navbar.Brand>
-          <Nav.Link href='/admin' style={{color: 'white'}}><RiAdminFill size={25}/>Admin Dashboard</Nav.Link>
-          <Nav.Link href='/teacher' style={{color: 'white'}}><FaAppleAlt size={25} />Teacher Dashboard</Nav.Link>
-          <Nav.Link href='/calendar' style={{color: 'white'}}> <FaCalendarAlt size={25}/>Calendar</Nav.Link>
-          <Nav.Link href='/student-dir' style={{color: 'white'}}>Student Directory</Nav.Link>
-          <Nav.Link href='/teacher-dir' style={{color: 'white'}}>Teacher Directory</Nav.Link>
-
+          <NavDropdown title="Pages" id="basic-nav-dropdown" style={{color: 'white'}}>
+            <NavDropdown.Item href='/admin'><RiAdminFill size={25}/>Admin Dashboard</NavDropdown.Item>
+            <NavDropdown.Item href='/teacher'><FaAppleAlt size={25} />Teacher Dashboard</NavDropdown.Item>
+            <NavDropdown.Item href='/calendar'> <FaCalendarAlt size={25}/>Calendar</NavDropdown.Item>
+            <NavDropdown.Item href='/student-dir'>Student Directory</NavDropdown.Item>
+            <NavDropdown.Item href='/teacher-dir'>Teacher Directory</NavDropdown.Item>
+          </NavDropdown>
         </Navbar>
         <Switch>
           <ClassProvider>
@@ -116,8 +118,11 @@ function Home() {
             </StudentProvider>
           </ClassProvider>
         </Switch>
+        <Footer/>
       </div>
     </BrowserRouter>
+    
+
   );
 }
 
