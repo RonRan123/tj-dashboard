@@ -11,7 +11,7 @@ function AddEditForm({isEdit, info, close}){
     const fields = {
         firstName: '',
         lastName: '',
-        DOB: '06/02/2021',
+        DOB: '06/04/2021',
         classID: '',
         grade: '',
 
@@ -24,7 +24,8 @@ function AddEditForm({isEdit, info, close}){
     const [state, setState] = useState(info);
     
     const onChange = e => {
-        setState({...state, [e.target.name]: e.target.value})
+        setState({...state, [e.target.name]: e.target.value});
+        // console.log([e.target.name], e.target.value)
     }
     const changeDate = (d) => {
         const date = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();

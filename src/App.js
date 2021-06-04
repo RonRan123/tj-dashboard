@@ -7,8 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import LandingPage from './components/LandingPage';
 function App() {
 	return (
-		<div>
+		<div id="page-container">
+			<div id="content-wrap">
 			<Home />
+			</div>
 		</div>
 	);
 }

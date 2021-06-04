@@ -1,6 +1,8 @@
 body,
 html {
-	height: 100%;
+	height: 100vh;
+	min-height: 100%;
+	font-family: "Times New Roman", serif;
 }
 
 /* The hero image */
@@ -20,6 +22,28 @@ html {
 	padding-top: 50%;
 }
 
+#page-container {
+	position: relative;
+	min-height: 100vh;
+  }
+  
+  #content-wrap {
+	padding-bottom: 2.5rem;    /* Footer height */
+  }
+
+#footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;            /* Footer height */
+  }
+
+.header {
+	font-size: 100px;
+}
+.subtitle {
+	font-size: 30px;
+}
 /* Place text in the middle of the image */
 .hero-text {
 	text-align: center;
