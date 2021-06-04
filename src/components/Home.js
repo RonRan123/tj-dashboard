@@ -189,7 +189,11 @@ function Home() {
           </StudentProvider>
         </ClassProvider>
       </Switch>
-      <Footer />
+      <footer id="footer">
+      <Footer/> 
+      </footer>
+      
+   
     </BrowserRouter>
   );
 }
