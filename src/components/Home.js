@@ -7,7 +7,7 @@ import StudentDirectory from "./StudentDirectory";
 import TeacherDirectory from "./TeacherDirectory";
 import {FaAppleAlt, FaCalendarAlt, FaSchool, FaChalkboardTeacher} from 'react-icons/fa'
 import {RiAdminFill} from 'react-icons/ri'
-import {BsFillPersonFill} from 'react-icons/bs
+import {BsFillPersonFill} from 'react-icons/bs'
 import LandingPage from './LandingPage';
 
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
@@ -99,7 +99,7 @@ function Home() {
 	return (
 		<BrowserRouter>
 			<div style={{ textAlign: 'center' }}>
-				<Navbar bg="primary" variant="dark" style={{ marginBottom: '1%' }}>
+				<Navbar bg="primary" variant="dark" style={{}}>
 					<Navbar.Brand href="/" style={{ paddingLeft: '1%' }}>
 						<FaSchool size={35} />
 					</Navbar.Brand>
