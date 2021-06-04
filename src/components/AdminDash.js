@@ -42,10 +42,12 @@ function AdminDash() {
 					</Col>
 
 					<Col md='auto'> 
+					<h1>Students</h1>
 						<ClassCard classID={classID}> </ClassCard>
 						<StudentDash classID={classID} />
 					</Col>
 					<Col>
+					<h1>Teachers</h1>
 					<TeacherAdminDash/>
 					</Col>
 				</Row>
