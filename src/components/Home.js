@@ -73,7 +73,7 @@ function TeacherProvider({ children }) {
 }
 
 function HomeScreen() {
-	return <h1></h1>;
+	return <LandingPage />;
 	// return (
 	// 	// <div> {<LandingPage></LandingPage>}</div>
 
