@@ -17,8 +17,8 @@ import LandingPage from "./LandingPage";
 
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SideMenu from './SideMenu';
-import Footer from './Footer';
+import SideMenu from "./SideMenu";
+import Footer from "./Footer";
 
 import { Button, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
@@ -103,20 +103,44 @@ function HomeScreen() {
 function Home() {
   return (
     <BrowserRouter>
-      
-      <div style={{ textAlign: "center" }}>
-// <<<<<<< styling
-//         <Navbar bg="primary" variant='dark' style={{marginBottom:"1%", position: 'sticky'}} fixed="top">
-//           <Navbar.Brand href="/" style={{paddingLeft:'1%'}}><FaSchool size={35}/></Navbar.Brand>
-//           <NavDropdown title="Pages" id="basic-nav-dropdown" style={{color: 'white'}}>
-//             <NavDropdown.Item href='/admin'><RiAdminFill size={25}/>Admin Dashboard</NavDropdown.Item>
-//             <NavDropdown.Item href='/teacher'><FaAppleAlt size={25} />Teacher Dashboard</NavDropdown.Item>
-//             <NavDropdown.Item href='/calendar'> <FaCalendarAlt size={25}/>Calendar</NavDropdown.Item>
-//             <NavDropdown.Item href='/student-dir'>Student Directory</NavDropdown.Item>
-//             <NavDropdown.Item href='/teacher-dir'>Teacher Directory</NavDropdown.Item>
-//           </NavDropdown>
-// =======
-        <Navbar bg="primary" variant="dark" style={{}}>
+      {/* <div style={{ textAlign: "center" }}>
+        <Navbar
+          bg="warning"
+          variant="dark"
+          style={{ position: "sticky" }}
+          fixed="top"
+        >
+          <Navbar.Brand href="/" style={{ paddingLeft: "1%" }}>
+            <FaSchool size={35} />
+          </Navbar.Brand>
+          <NavDropdown
+            title="Pages"
+            id="basic-nav-dropdown"
+            style={{ color:'white', textDecorationColor:'white' }}
+          >
+            <NavDropdown.Item href="/admin">
+              <RiAdminFill size={25} />
+              Admin Dashboard
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/teacher">
+              <FaAppleAlt size={25} />
+              Teacher Dashboard
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/calendar">
+              {" "}
+              <FaCalendarAlt size={25} />
+              Calendar
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/student-dir">
+              Student Directory
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/teacher-dir">
+              Teacher Directory
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Navbar>
+      </div> */}
+      <Navbar bg="warning" variant="dark" style={{}}>
           <Navbar.Brand href="/" style={{ paddingLeft: "1%" }}>
             <FaSchool size={35} />
           </Navbar.Brand>
@@ -151,31 +175,22 @@ function Home() {
             </p>
           </Nav.Link>
         </Navbar>
-        <Switch>
-          <ClassProvider>
-            <StudentProvider>
-              <TeacherProvider>
-                <Route path="/" exact render={() => <HomeScreen />} />
-                <Route path="/admin" render={() => <AdminDash />} />
-                <Route path="/teacher" render={() => <TeacherDash />} />
-                <Route path="/calendar" render={() => <Calendar />} />
-                <Route
-                  path="/student-dir"
-                  render={() => <StudentDirectory />}
-                />
-                <Route
-                  path="/teacher-dir"
-                  render={() => <TeacherDirectory />}
-                />
-              </TeacherProvider>
-            </StudentProvider>
-          </ClassProvider>
-        </Switch>
-        <Footer/>
-      </div>
+      <Switch>
+        <ClassProvider>
+          <StudentProvider>
+            <TeacherProvider>
+              <Route path="/" exact render={() => <HomeScreen />} />
+              <Route path="/admin" render={() => <AdminDash />} />
+              <Route path="/teacher" render={() => <TeacherDash />} />
+              <Route path="/calendar" render={() => <Calendar />} />
+              <Route path="/student-dir" render={() => <StudentDirectory />} />
+              <Route path="/teacher-dir" render={() => <TeacherDirectory />} />
+            </TeacherProvider>
+          </StudentProvider>
+        </ClassProvider>
+      </Switch>
+      <Footer />
     </BrowserRouter>
-    
-
   );
 }
 

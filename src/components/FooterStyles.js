@@ -2,11 +2,11 @@ import styled from 'styled-components';
    
 export const Box = styled.div`
   padding: 10px;
-  background: #0D6EFD;
-  position: absolute;
+  background: #FFC107;
+  position: relative;
   bottom: 0;
   width: 100%;
-  
+  margin-top: 1%;
    
   @media (max-width: 1000px) {
     padding: 70px 30px;

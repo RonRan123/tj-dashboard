@@ -23,9 +23,9 @@ const Footer = () => {
           </Column>
           <Column>
             <Heading>Contact Us</Heading>
-            <FooterLink href="#">Phone: (202)-555-0158</FooterLink>
-            <FooterLink href="#">Email: help@tjelementary.edu</FooterLink>
-            <FooterLink href="#">Fax: (161)-999-8888</FooterLink>
+            <FooterLink href="mailto:contactus@tjes.edu">Email: contactus@tjes.edu</FooterLink>
+            <FooterLink href="#">Phone: (434) 293-4402</FooterLink>
+            <FooterLink href="#">1609 University Ave, Charlottesville, VA 22903</FooterLink>
           </Column>
           <Column>
             <Heading>Social Media</Heading>
@@ -49,14 +49,7 @@ const Footer = () => {
                   Twitter
                 </span>
               </i>
-            </FooterLink>
-            <FooterLink href="#">
-              <i className="fab fa-youtube">
-                <span style={{ marginLeft: "10px" }}>
-                  Youtube
-                </span>
-              </i>
-            </FooterLink>
+            </FooterLink> 
           </Column>
         </Row>
       </Container>

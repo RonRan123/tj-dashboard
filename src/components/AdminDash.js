@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ClassDash from './ClassDash';
 import StudentDash from './StudentDash';
-import { Container, Row, Col } from 'react-bootstrap';
-import { ClassContext, StudentContext, TeacherContext } from './Home';
-import ClassCard from './ClassCard';
-import TeacherAdminDash from './TeacherAdminDash';
-
+import {Container, Row, Col} from 'react-bootstrap';
+import {ClassContext, StudentContext, TeacherContext} from './Home';
 function AdminDash() {
-	const { classes, getMyClasses } = React.useContext(ClassContext);
-	const { teachers, getTeachers } = React.useContext(TeacherContext);
+	const {classes, getMyClasses} = React.useContext(ClassContext);
+	const {teachers, getTeachers} = React.useContext(TeacherContext);
 	const [classID, setClassID] = useState('allIDs');
-
+	
 	// const [classes, setClasses] = useState([]);
 	// const [teachers, setTeachers] = useState([]);
 	// const getMyClasses = async () => {
@@ -34,19 +31,14 @@ function AdminDash() {
 	}, []);
 	return (
 		<div>
-			<Container style={{}}>
+			<Container>
 				<Row>
-					<Col md='auto' style={{margin:'auto'}}>
-						{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
-						<ClassDash setClassID={setClassID} />
-					</Col>
-
-					<Col md='auto'> 
-						<ClassCard classID={classID}> </ClassCard>
-						<StudentDash classID={classID} />
-					</Col>
 					<Col>
-					<TeacherAdminDash/>
+					{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
+						<ClassDash setClassID={setClassID}/>
+					</Col>
+					<Col xs={10}>
+						<StudentDash classID={classID}/>
 					</Col>
 				</Row>
 			</Container>
