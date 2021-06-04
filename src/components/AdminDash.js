@@ -1,13 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import ClassDash from './ClassDash';
 import StudentDash from './StudentDash';
-import {Container, Row, Col} from 'react-bootstrap';
-import {ClassContext, StudentContext, TeacherContext} from './Home';
+import { Container, Row, Col } from 'react-bootstrap';
+import { ClassContext, StudentContext, TeacherContext } from './Home';
+import ClassCard from './ClassCard';
+import TeacherAdminDash from './TeacherAdminDash';
+
 function AdminDash() {
-	const {classes, getMyClasses} = React.useContext(ClassContext);
-	const {teachers, getTeachers} = React.useContext(TeacherContext);
+	const { classes, getMyClasses } = React.useContext(ClassContext);
+	const { teachers, getTeachers } = React.useContext(TeacherContext);
 	const [classID, setClassID] = useState('allIDs');
-	
+
 	// const [classes, setClasses] = useState([]);
 	// const [teachers, setTeachers] = useState([]);
 	// const getMyClasses = async () => {
@@ -34,11 +37,17 @@ function AdminDash() {
 			<Container>
 				<Row>
 					<Col>
-					{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
-						<ClassDash setClassID={setClassID}/>
+						{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
+						<ClassDash setClassID={setClassID} />
+					</Col>
+
+					<Col xs={10}>
+						<ClassCard classID={classID}> </ClassCard>
+						<StudentDash classID={classID} />
+						<TeacherAdminDash/>
 					</Col>
 					<Col xs={10}>
-						<StudentDash classID={classID}/>
+					
 					</Col>
 				</Row>
 			</Container>

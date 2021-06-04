@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import AdminDash from './AdminDash.js';
-import TeacherDash from './TeacherDash.js';
-import StudentDash from './StudentDash.js';
-import Calendar from './Calendar';
-import StudentDirectory from './StudentDirectory';
-import TeacherDirectory from './TeacherDirectory';
-import { FaAppleAlt, FaCalendarAlt, FaSchool } from 'react-icons/fa';
-import { RiAdminFill } from 'react-icons/ri';
+import React, { useState } from "react";
+import AdminDash from "./AdminDash.js";
+import TeacherDash from "./TeacherDash.js";
+import StudentDash from "./StudentDash.js";
+import Calendar from "./Calendar";
+import StudentDirectory from "./StudentDirectory";
+import TeacherDirectory from "./TeacherDirectory";
+import {FaAppleAlt, FaCalendarAlt, FaSchool, FaChalkboardTeacher} from 'react-icons/fa'
+import {RiAdminFill} from 'react-icons/ri'
+import {BsFillPersonFill} from 'react-icons/bs
 import LandingPage from './LandingPage';
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { Button, Nav, Navbar } from "react-bootstrap";
 
 const ClassContext = React.createContext([]);
 const StudentContext = React.createContext([]);
@@ -93,6 +95,7 @@ function HomeScreen() {
 }
 
 function Home() {
+
 	return (
 		<BrowserRouter>
 			<div style={{ textAlign: 'center' }}>

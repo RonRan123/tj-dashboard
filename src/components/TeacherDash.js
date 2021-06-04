@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react';
-
+import { InputGroup } from 'react-bootstrap';
+import {ClassContext, StudentContext, TeacherContext} from './Home';
+import SelectClassForm from './SelectClassForm';
+import StudentDash from './StudentDash';
 function TeacherDash() {
-	const [students, setStudents] = useState();
-	const [myClass, setMyClass] = useState();
-	const [classes, setClasses] = useState();
-	const getMyClasses = async () => {
-		const url = new URL('http://localhost:8080/classes/get');
-		let res = await fetch(url).then((resp) => resp.json());
-		setClasses(res);
-		// console.log('books have been set')
-	};
-
-	const getMyStudents = async () => {
-		const url = new URL('http://localhost:8080/teachers/get');
-		let res = await fetch(url).then((resp) => resp.json());
-		setClasses(res);
-		// console.log('books have been set')
-	};
+	const {classes, getMyClasses} = React.useContext(ClassContext);
+	const [classID, setClassID] = useState('allIDs');
 	useEffect(() => {
-		getMyClasses();
+		// getMyClasses();
 	}, []);
-	return <div></div>;
+	return (
+		<div>
+			<div style={{display: 'flex', justifyContent: 'center'}}>
+				<SelectClassForm setClassID={setClassID}/>
+			</div>
+			<StudentDash classID={classID} isTeacher={true}/>
+		</div>
+	);
 }
 
 export default TeacherDash;
