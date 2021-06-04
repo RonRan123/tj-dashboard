@@ -34,7 +34,7 @@ function ClassCard(classID) {
 					<strong>Teacher:</strong> {getTeacherName(classID)}{' '}
 				</Card.Title>
 
-				<Button style={{ float: 'right' }} variant="dark" onClick={() => setModal(true)}>
+				<Button style={{ float: 'right' }} variant="secondary" onClick={() => setModal(true)}>
 					{' '}
 					Edit Teacher{' '}
 				</Button>

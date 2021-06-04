@@ -2,31 +2,30 @@ import React, { useState } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import { TeacherContext } from "./Home";
 
-
 function AdminTeacherEditForm({ index, setModal }) {
   const { teachers, getTeachers } = React.useContext(TeacherContext);
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
 
-  const handleSubmit =  async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const request = await fetch("http://localhost:8080/teachers/update", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          doc_id: teachers[index].doc_id,
-          classID: teachers[index].classID,
-          firstName: firstName,
-          lastName: lastName,
-        }),
-      }).then((resp) => {
-        resp.json();
-        getTeachers();
-      });
-      setModal(false);
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        doc_id: teachers[index].doc_id,
+        classID: teachers[index].classID,
+        firstName: firstName,
+        lastName: lastName,
+      }),
+    }).then((resp) => {
+      resp.json();
+      getTeachers();
+    });
+    setModal(false);
     return;
   };
 
@@ -60,53 +59,58 @@ function AdminTeacherEditForm({ index, setModal }) {
   );
 }
 
-function AddTeacherForm({setModal2}) {
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
+function AddTeacherForm({ setModal2 }) {
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
 
-    const{getTeachers} = React.useContext(TeacherContext);
+  const { getTeachers } = React.useContext(TeacherContext);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        (async () => {
-            const rawResponse = await fetch('http://localhost:8080/teachers/add', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({classID: "", firstName: firstName, lastName: lastName}),
-            }).then((res) => getTeachers());
-        })();
-        setModal2(false);
-    }
-    
-    return(<Form onSubmit={handleSubmit}>
-        <Form.Label>First Name</Form.Label>
-        <Form.Control
-          required
-          placeholder="John"
-          name="first"
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        ></Form.Control>
-        <Form.Label>Last Name</Form.Label>
-        <Form.Control
-          required
-          placeholder="Doe"
-          name="last"
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        ></Form.Control>
-  
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    (async () => {
+      const rawResponse = await fetch("http://localhost:8080/teachers/add", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          classID: "",
+          firstName: firstName,
+          lastName: lastName,
+        }),
+      }).then((res) => getTeachers());
+    })();
+    setModal2(false);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Label>First Name</Form.Label>
+      <Form.Control
+        required
+        placeholder="John"
+        name="first"
+        onChange={(e) => {
+          setFirstName(e.target.value);
+        }}
+      ></Form.Control>
+      <Form.Label>Last Name</Form.Label>
+      <Form.Control
+        required
+        placeholder="Doe"
+        name="last"
+        onChange={(e) => {
+          setLastName(e.target.value);
+        }}
+      ></Form.Control>
+
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
 }
-
 
 function TeacherAdminDash() {
   const { teachers, getTeachers } = React.useContext(TeacherContext);
@@ -148,27 +152,22 @@ function TeacherAdminDash() {
         </thead>
         {teachers.map((teacher, index) => {
           return (
+            <tbody>
             <tr>
-              <td>{teacher.firstName}</td>
-              <td>{teacher.lastName}</td>
-              <td>{teacher.classID}</td>
-              <td>
-                <Button
-                  id={index}
-                  onClick={handleEdit}
-                  variant="outline-primary"
-                >
-                  Edit
-                </Button>
-                <Button
-                  id={index}
-                  onClick={handleDelete}
-                  variant="outline-danger"
-                >
-                  Delete
-                </Button>
-              </td>
+              
+                <td>{teacher.firstName}</td>
+                <td>{teacher.lastName}</td>
+                <td>{teacher.classID}</td>
+                <td>
+                  <Button id={index} onClick={handleEdit} variant="secondary">
+                    Edit
+                  </Button>
+                  <Button id={index} onClick={handleDelete} variant="danger" style={{marginLeft: '3%'}}>
+                    Delete
+                  </Button>
+                </td>
             </tr>
+            </tbody>
           );
         })}
       </Table>
@@ -184,8 +183,16 @@ function TeacherAdminDash() {
         </Modal.Header>
         <AdminTeacherEditForm index={index} setModal={setModal} />
       </Modal>
-      <Button variant='primary' onClick={()=>setModal2(true)}>Add Teacher</Button>
-      <Modal show={modal2} onHide={()=>setModal2(false)}> <Modal.Header closeButton><Modal.Title>Add Teacher</Modal.Title></Modal.Header><AddTeacherForm setModal2={setModal2}/></Modal>
+      <Button variant="success" onClick={() => setModal2(true)}>
+        Add Teacher
+      </Button>
+      <Modal show={modal2} onHide={() => setModal2(false)}>
+        {" "}
+        <Modal.Header closeButton>
+          <Modal.Title>Add Teacher</Modal.Title>
+        </Modal.Header>
+        <AddTeacherForm setModal2={setModal2} />
+      </Modal>
     </div>
   );
 }

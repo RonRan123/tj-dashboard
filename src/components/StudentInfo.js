@@ -43,7 +43,7 @@ function Student({ info , isTeacher}) {
           <div>
             <StudentForm buttonLabel="Edit" info={info} />
             {/* <Button variant="outline-primary" onClick={deleteStudent}>Edit</Button> */}{" "}
-            <Button variant="outline-danger" onClick={deleteStudent}>
+            <Button variant="danger" onClick={deleteStudent}>
               Delete
             </Button>
           </div>

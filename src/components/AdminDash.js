@@ -34,20 +34,19 @@ function AdminDash() {
 	}, []);
 	return (
 		<div>
-			<Container>
+			<Container style={{}}>
 				<Row>
-					<Col>
+					<Col md='auto' style={{margin:'auto'}}>
 						{/* <div style={{ maxHeight: 'max-content', maxWidth: '25%', margin: '1%' }}> */}
 						<ClassDash setClassID={setClassID} />
 					</Col>
 
-					<Col xs={10}>
+					<Col md='auto'> 
 						<ClassCard classID={classID}> </ClassCard>
 						<StudentDash classID={classID} />
-						<TeacherAdminDash/>
 					</Col>
-					<Col xs={10}>
-					
+					<Col>
+					<TeacherAdminDash/>
 					</Col>
 				</Row>
 			</Container>
