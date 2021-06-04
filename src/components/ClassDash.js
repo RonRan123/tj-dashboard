@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
 import ClassInfo from './ClassInfo';
 import ClassForm from './ClassForm';
-import {ClassContext, StudentContext, TeacherContext} from './Home';
+import { ClassContext, StudentContext, TeacherContext } from './Home';
+import ClassCard from './ClassCard';
+function ClassDash({ setClassID }) {
+	const { classes, getMyClasses } = React.useContext(ClassContext);
+	const { teachers } = React.useContext(TeacherContext);
 
-function ClassDash({setClassID}) {
-	const {classes, getMyClasses} = React.useContext(ClassContext);
-	const {teachers} = React.useContext(TeacherContext);
-	
 	const [modal, setModal] = useState(false);
 
 	const handleClick = (e) => {
@@ -19,20 +19,29 @@ function ClassDash({setClassID}) {
 	useEffect(() => {}, []);
 	return (
 		<Tab.Container defaultActiveKey="#link0">
-			<ListGroup>
+			<ListGroup style={{width:'max-content'}}>
 				<div>
-				<ListGroup.Item variant="primary" onClick={() => setClassID('allIDs')} action href={'#link' + 0}>
-					<h4> Show All Students </h4>
-				</ListGroup.Item>
+					<ListGroup.Item
+						variant="secondary"
+						onClick={() => setClassID('allIDs')}
+						action
+						href={'#link' + 0}
+					>
+						<h4> Show All Students </h4>
+					</ListGroup.Item>
 				</div>
 				{classes &&
 					classes.map((c, index) => {
 						console.log(c);
 						return (
-							<ClassInfo c={c} index={index+1} setClassID={setClassID}></ClassInfo>
+							<ClassInfo
+								c={c}
+								index={index + 1}
+								setClassID={setClassID}
+							></ClassInfo>
 						);
 					})}
-				<ListGroup.Item variant="dark" action onClick={handleClick}>
+				<ListGroup.Item variant="success" action onClick={handleClick} active style={{backgroundColor:'#198754'}}>
 					Add a Class
 				</ListGroup.Item>
 			</ListGroup>
@@ -46,9 +55,7 @@ function ClassDash({setClassID}) {
 					<Modal.Title>Add a Class</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<ClassForm
-						setModal={setModal}
-					/>
+					<ClassForm setModal={setModal} />
 				</Modal.Body>
 			</Modal>
 		</Tab.Container>

@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { ListGroup, Tab, Row, Col, Modal, Form, Button } from 'react-bootstrap';
-import ClassInfo from './ClassInfo';
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+//import ClassInfo from './ClassInfo';
 import { ClassContext, TeacherContext } from './Home';
 
-function ClassForm({setModal}) {
-	
-	const {teachers} = React.useContext(TeacherContext);
-	const {getMyClasses} = React.useContext(ClassContext);
-	
+function ClassForm({ setModal }) {
+	const { teachers } = React.useContext(TeacherContext);
+	const { getMyClasses } = React.useContext(ClassContext);
+
 	const [className, setClassName] = useState('');
 	const [grade, setGrade] = useState(0);
 	const [teacherID, setTeacherID] = useState(teachers[0].doc_id);
-
-
 
 	return (
 		<Form
@@ -115,7 +112,7 @@ function ClassForm({setModal}) {
 				</Form.Group>
 			</div>
 			<br />
-			<Form.Label>Choose Teacher</Form.Label>
+			{/* <Form.Label>Choose Teacher</Form.Label>
 			<Form.Control as="select" name="teacher" defaultValue="option0">
 				{teachers.map((teacher, index) => {
 					return (
@@ -137,9 +134,7 @@ function ClassForm({setModal}) {
 						</option>
 					);
 				})}
-				{/* <option>Choose...</option>
-            <option>...</option> */}
-			</Form.Control>
+			</Form.Control> */}
 			<Button variant="primary" type="submit">
 				Submit
 			</Button>
