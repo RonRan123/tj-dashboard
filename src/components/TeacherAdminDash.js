@@ -180,8 +180,9 @@ function TeacherAdminDash() {
         <Modal.Header closeButton>
           {" "}
           <Modal.Title>Edit Teacher</Modal.Title>
-        </Modal.Header>
+        </Modal.Header><Modal.Body>
         <AdminTeacherEditForm index={index} setModal={setModal} />
+        </Modal.Body>
       </Modal>
       <Button variant="success" onClick={() => setModal2(true)}>
         Add Teacher
@@ -191,7 +192,9 @@ function TeacherAdminDash() {
         <Modal.Header closeButton>
           <Modal.Title>Add Teacher</Modal.Title>
         </Modal.Header>
+        <Modal.Body>
         <AddTeacherForm setModal2={setModal2} />
+        </Modal.Body>
       </Modal>
     </div>
   );

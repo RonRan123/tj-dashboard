@@ -16,7 +16,7 @@ function TeacherDirectory(){
         getTeachers();
     },[])
     return (
-        <div>
+        <div style={{margin:'3%'}}>
         <Table striped bordered hover size="sm">
             <thead>
                 <tr>

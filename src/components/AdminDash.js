@@ -33,7 +33,7 @@ function AdminDash() {
 		getTeachers();
 	}, []);
 	return (
-		<div>
+		<div style={{margin:'3%'}}>
 			<Container style={{}}>
 				<Row>
 					<Col md='auto' style={{margin:'auto'}}>
