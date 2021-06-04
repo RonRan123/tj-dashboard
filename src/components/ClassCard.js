@@ -1,19 +1,26 @@
-import React from 'react';
-import { Card, Tab, Row, Col, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Card, Tab, Row, Col, Button, Modal } from 'react-bootstrap';
+import EditTeachForm from './EditTeachForm';
 import { ClassContext, TeacherContext } from './Home';
+
 function ClassCard(classID) {
 	//need access to teacher name, class id,
 	const { classes, getMyClasses } = React.useContext(ClassContext);
 	const { teachers, getTeachers } = React.useContext(TeacherContext);
+	const [modal, setModal] = useState(false);
+
+	let oldTeacher = "";
+
 	const getTeacherName = (classID) => {
 		let teacherName = '';
 		for (let teach in teachers) {
 			if (teachers[teach].classID === classID.classID) {
+				oldTeacher = teachers[teach];
 				return (teacherName +=
 					teachers[teach].firstName + ' ' + teachers[teach].lastName);
 			}
 			console.log(
-				'Teacher ID ' + teachers[teach].classID + ' GLobal classID ' + classID
+				'Teacher ID ' + teachers[teach].doc_id + ' GLobal classID ' + JSON.stringify(classID)
 			);
 		}
 		return 'None Assigned';
@@ -21,17 +28,18 @@ function ClassCard(classID) {
 	return (
 		<Card>
 			<Card.Header as="h5"> {classID.classID} </Card.Header>
-			<Card.Body>
+			{classID.classID !== "allIDs" ? (<Card.Body>
 				<Card.Title style={{ float: 'left' }}>
 					{' '}
 					<strong>Teacher:</strong> {getTeacherName(classID)}{' '}
 				</Card.Title>
 
-				<Button style={{ float: 'right' }} variant="dark">
+				<Button style={{ float: 'right' }} variant="dark" onClick={() => setModal(true)}>
 					{' '}
 					Edit Teacher{' '}
 				</Button>
-			</Card.Body>
+			</Card.Body>) : null}
+			<Modal show={modal} onHide={() => {setModal(false)}}><Modal.Header closeButton><Modal.Title>Edit Teacher</Modal.Title></Modal.Header><EditTeachForm setModal={setModal} classID={classID} oldTeacher={oldTeacher}/></Modal>
 		</Card>
 	);
 }

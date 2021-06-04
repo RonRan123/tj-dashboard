@@ -4,6 +4,7 @@ import StudentDash from './StudentDash';
 import { Container, Row, Col } from 'react-bootstrap';
 import { ClassContext, StudentContext, TeacherContext } from './Home';
 import ClassCard from './ClassCard';
+import TeacherAdminDash from './TeacherAdminDash';
 
 function AdminDash() {
 	const { classes, getMyClasses } = React.useContext(ClassContext);
@@ -43,6 +44,10 @@ function AdminDash() {
 					<Col xs={10}>
 						<ClassCard classID={classID}> </ClassCard>
 						<StudentDash classID={classID} />
+						<TeacherAdminDash/>
+					</Col>
+					<Col xs={10}>
+					
 					</Col>
 				</Row>
 			</Container>
